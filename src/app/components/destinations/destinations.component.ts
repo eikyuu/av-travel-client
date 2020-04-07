@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Destination } from 'src/app/shared/models/destination';
 
 @Component({
   selector: 'app-destinations',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./destinations.component.scss']
 })
 export class DestinationsComponent implements OnInit {
+
+  @Input() destinations: Destination;
 
   constructor() { }
 
