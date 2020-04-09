@@ -9,7 +9,7 @@ export class Destination {
   image: string;
   tours: Tours[];
 
-  constructor(input: Destination) {
-    Object.assign(this, input);
+  constructor(destination: Destination) {
+    Object.assign(this, destination);
   }
 }

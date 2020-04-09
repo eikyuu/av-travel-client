@@ -1,8 +1,17 @@
 <div class="container">
-  <h1>Les destinations populaire !</h1>
   <div class="row">
-    <div class="col-sm-6 col-md-6 my-1" style="display: flex; justify-content: center;" *ngFor="let destination of destinations">
-      <img [src]="destination.image" alt="" style="height: 10rem;">
+    <h1 class="col-12 mt-5 mb-3 destinations_h1">Destinations populaire</h1>
+    <div class="col-sm-6 col-md-6 my-1" style="display: flex; justify-content: center;" *ngFor="let destination of destinations | slice:0:4">
+      <a href="http://google.com">
+        <img class="destinations_img" [src]="destination.image" alt="">
+        <!-- <div *ngFor="let item of destination.tours">
+            <button type="button" class="btn btn-primary">{{item.id}} tours</button>
+        </div> -->
+        <div class="destinations_city">
+          <p>{{destination.pays}} {{destination.ville}}</p>
+        </div>
+      </a>
     </div>
+      <button type="submit" class="btn btn-warning mx-auto">Voir toutes les destinations</button>
   </div>
 </div>
