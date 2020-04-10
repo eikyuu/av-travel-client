@@ -10,6 +10,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DestinationsComponent } from './components/destinations/destinations.component';
 import { ToursComponent } from './components/tours/tours.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ToursComponent } from './components/tours/tours.component';
     BannerComponent,
     SearchBarComponent,
     DestinationsComponent,
-    ToursComponent
+    ToursComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

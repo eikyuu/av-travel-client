@@ -1,0 +1,23 @@
+.banner_home {
+  background: url("/assets/img/beach.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+@media (min-width: 740px) {
+
+  .banner_home {
+    height: 30rem;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+
+
+
+}
