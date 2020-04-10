@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row mt-5">
+    <h1 class="col-12">Tours populaire</h1>
+      <div class="mt-3 col-sm-6 col-md-4 mx-auto" *ngFor="let tours of tours | slice:0:6">
+        <a href="http://google.com">
+          <div class="card">
+            <img [src]="tours.image" class="card-img-top" alt="...">
+            <div class="m-3">
+                <h5 class="tours_title">{{tours.nameImage}}</h5>
+                <h5 class="">{{tours.title}}</h5>
+                <p class="card-text">{{tours.description}}</p>
+              <div class="div_price_days mt-3">
+                <p class="card-text">{{tours.numberDays}} jours</p>
+                <p class="card-text">{{tours.price}}€</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+  </div>
+  <div class="row mt-4 mb-5">
+    <button type="submit" class="btn btn-warning mx-auto">Voir tous les tours</button>
+  </div>
+</div>
+

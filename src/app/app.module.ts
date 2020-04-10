@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DestinationsComponent } from './components/destinations/destinations.component';
+import { ToursComponent } from './components/tours/tours.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DestinationsComponent } from './components/destinations/destinations.co
     NavbarComponent,
     BannerComponent,
     SearchBarComponent,
-    DestinationsComponent
+    DestinationsComponent,
+    ToursComponent
   ],
   imports: [
     BrowserModule,
