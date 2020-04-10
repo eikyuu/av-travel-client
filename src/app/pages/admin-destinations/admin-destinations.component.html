@@ -1,0 +1,54 @@
+
+  <div class="container">
+    <h1 class="display-4 pt-5 mb-0">Index Destinations</h1>
+    <hr class="mt-0 mb-5 bg-dark">
+    <div class="row">
+      <div class="col-12">
+        <div class="rounded shadow bg-white p-5">
+          <div class="row">
+            <div *ngFor="let destination of destinations; let i = index" class="col-12 shadow-sm p-4 mb-3 bg-light">
+              <div class="row">
+                <div class="col-md-10">
+                  <h3 class="font-weight-normal pl-3">{{ destination.title }}</h3>
+                </div>
+              </div>
+              <div class="row">
+                <p>{{ destination.description }}</p>
+              </div>
+              <div class="row">
+                <div class="ml-auto">
+                  <button class="btn btn-primary m-1"  type="button" data-toggle="modal" data-target="#sectionFormModal"><i class="fas fa-edit"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="modal fade" id="sectionFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <form id="demo" [formGroup]="sectionForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Edition d'une section</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input  type="text" placeholder="Title" class="form-control" formControlName="title">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control w-100" rows="4" placeholder="description" formControlName="description"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" onclick = "$('.close').trigger('click')" [disabled]="!sectionForm.valid">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>

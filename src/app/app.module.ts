@@ -11,6 +11,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { DestinationsComponent } from './components/destinations/destinations.component';
 import { ToursComponent } from './components/tours/tours.component';
 import { PlayerComponent } from './components/player/player.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminDestinationsComponent } from './pages/admin-destinations/admin-destinations.component';
+import { AdminToursComponent } from './pages/admin-tours/admin-tours.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { PlayerComponent } from './components/player/player.component';
     SearchBarComponent,
     DestinationsComponent,
     ToursComponent,
-    PlayerComponent
+    PlayerComponent,
+    AdminDashboardComponent,
+    AdminDestinationsComponent,
+    AdminToursComponent
   ],
   imports: [
     BrowserModule,
