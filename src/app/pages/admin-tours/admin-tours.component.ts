@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tours } from 'src/app/shared/models/tours';
+import { ToursService } from 'src/app/shared/services/tours.service';
 
 @Component({
   selector: 'app-admin-tours',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminToursComponent implements OnInit {
 
-  constructor() { }
+  public tours: Tours[] = [];
+
+  constructor( public toursService: ToursService) { }
 
   ngOnInit() {
+    this.getTours();
   }
 
+  getTours() {
+    this.toursService.getTours().subscribe(
+      (paramTours) => {
+         this.tours =  paramTours;
+         console.log(this.tours);
+      }
+    );
+  }
 }

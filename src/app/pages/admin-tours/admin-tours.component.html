@@ -1,8 +1,39 @@
-
-  <div class="container">
-    <h1 class="display-4 pt-5 mb-0">Index Tours</h1>
-    <hr class="mt-0 mb-5 bg-dark">
-    <div class="row">
-
+<div class="rounded shadow bg-white p-5">
+  <div class="row">
+    <div class="col-12 d-flex">
+      <h2 class="font-weight-light">
+        <i class="fas fa-map-marked-alt"></i> Tours
+      </h2>
+      <button class="btn-primary ml-auto" type="button" data-toggle="modal" data-target="#propertiesFormModal" (click)="resetForm()">
+        <i class="fas fa-plus"></i> Ajouter un Tours
+      </button>
     </div>
   </div>
+  <hr class="mt-1 mb-5 bg-dark">
+  <div class="row">
+    <div *ngFor="let tour of tours; let i = index" class="col-12 shadow-sm p-4 mb-3 bg-light">
+      <div class="row">
+        <div class="col-md-10">
+          <h3 class="font-weight-normal">{{ tour.title }}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <p class="col-12">{{ tour.description }}</p>
+        <p class="col-6">{{ tour.price }}</p>
+        <p class="col-6">{{ tour.numberDays }}</p>
+        <img class="col-6" [src]="tour.image" alt="">
+      </div>
+      <div class="row">
+        <div class="col-9">
+          <div class="d-flex">
+            <div class="ml-auto">
+              <button class="btn btn-primary m-1" type="button" (click)="onEditProperty(property)"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-danger m-1" type="button" (click)="onDeleteProperty(i)"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
