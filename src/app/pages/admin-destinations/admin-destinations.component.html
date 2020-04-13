@@ -4,7 +4,7 @@
       <h2 class="font-weight-light">
         <i class="fas fa-map-marked-alt"></i> Destinations
       </h2>
-      <button class="btn-primary ml-auto" type="button" data-toggle="modal" data-target="#propertiesFormModal">
+      <button class="btn-primary ml-auto" type="button" data-toggle="modal" data-target="#destinationsFormModal" (click)="resetForm()">
         <i class="fas fa-plus"></i> Ajouter une destiation
       </button>
     </div>
@@ -26,8 +26,8 @@
         <div class="col-9">
           <div class="d-flex">
             <div class="ml-auto">
-              <button class="btn btn-primary m-1" type="button" (click)="onEditProperty(property)"><i class="fas fa-edit"></i></button>
-              <button class="btn btn-danger m-1" type="button" (click)="onDeleteProperty(i)"><i class="fas fa-trash-alt"></i></button>
+              <button class="btn btn-primary m-1"  type="button" data-toggle="modal" data-target="#destinationsFormModal" (click)="onEditDestination(destination, i)"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-danger m-1" type="button" (click)="onDeleteDestination(destination ,i)"><i class="fas fa-trash-alt"></i></button>
             </div>
           </div>
         </div>
@@ -36,3 +36,39 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="destinationsFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <form [formGroup]="destinationsForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Edition d'un bien</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" placeholder="Titre" class="form-control" formControlName="title">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Description" class="form-control" formControlName="description">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Pays" class="form-control" formControlName="pays">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="assets/img/paris.jpg" class="form-control" formControlName="image">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Paris" class="form-control" formControlName="ville">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" type="submit" onclick = "$('.close').trigger('click')" [disabled]="destinationsForm.invalid">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
