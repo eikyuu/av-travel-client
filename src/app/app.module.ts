@@ -13,11 +13,7 @@ import { ToursComponent } from './components/tours/tours.component';
 import { PlayerComponent } from './components/player/player.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { AdminDestinationsComponent } from './pages/admin-destinations/admin-destinations.component';
-import { AdminToursComponent } from './pages/admin-tours/admin-tours.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { IndexToursComponent } from './components/index-tours/index-tours.component';
-import { AddToursComponent } from './pages/add-tours/add-tours.component';
-import { EditToursComponent } from './pages/edit-tours/edit-tours.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +27,6 @@ import { EditToursComponent } from './pages/edit-tours/edit-tours.component';
     PlayerComponent,
     AdminDashboardComponent,
     AdminDestinationsComponent,
-    AdminToursComponent,
-    IndexToursComponent,
-    AddToursComponent,
-    EditToursComponent
   ],
   imports: [
     BrowserModule,

@@ -57,6 +57,7 @@ export class AdminDestinationsComponent implements OnInit {
     this.destinationsForm.get('description').setValue(destination.description);
     this.destinationsForm.get('pays').setValue(destination.pays);
     this.destinationsForm.get('image').setValue(destination.image);
+    this.destinationsForm.get('ville').setValue(destination.ville);
   }
 
   onDeleteDestination(destination: Destination) {
@@ -66,9 +67,10 @@ export class AdminDestinationsComponent implements OnInit {
   onSubmit() {
       if (this.editMode) {
         this.destinationService.updateDestination(this.destinationsForm.value, this.destinationsForm.value.id).subscribe(result => result);
-        this.router.navigate(['admin']);
+        window.location.reload();
       } else {
           this.destinationService.postDestination(this.destinationsForm.value).subscribe(result => result);
+          window.location.reload();
       }
     }
 }
