@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DestinationService } from 'src/app/shared/services/destination.service';
 import { Destination } from 'src/app/shared/models/destination';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-destinations',
@@ -12,21 +10,15 @@ import { Router } from '@angular/router';
 })
 export class AdminDestinationsComponent implements OnInit {
 
-  destinationSubscription: Subscription;
-  destinationsForm: FormGroup;
+
   editMode = false;
+  indexToRemove: any;
 
   public destinations: Destination[] = [];
 
-  constructor( public destinationService: DestinationService, private fb: FormBuilder, private router: Router) { }
+  constructor( public destinationService: DestinationService, private fb: FormBuilder) { }
 
-  ngOnInit() {
-    this.initDestinationForm();
-    this.getDestinations();
-  }
-
-  initDestinationForm() {
-    this.destinationsForm = this.fb.group({
+  destinationsForm = this.fb.group({
       id: [''],
       title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(1000)]],
@@ -34,6 +26,9 @@ export class AdminDestinationsComponent implements OnInit {
       image: [''],
       ville: ['']
     });
+
+  ngOnInit() {
+    this.getDestinations();
   }
 
   getDestinations() {
@@ -61,7 +56,12 @@ export class AdminDestinationsComponent implements OnInit {
   }
 
   onDeleteDestination(destination: Destination) {
-    this.destinationService.deleteDestination(destination).subscribe();
+    this.indexToRemove = destination;
+  }
+
+  onConfirmDeleteProperty() {
+    this.destinationService.deleteDestination(this.indexToRemove).subscribe();
+    window.location.reload();
   }
 
   onSubmit() {
