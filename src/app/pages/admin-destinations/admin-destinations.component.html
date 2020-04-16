@@ -12,6 +12,7 @@
   <hr class="mt-1 mb-5 bg-dark">
   <div class="row">
     <div *ngFor="let destination of destinations; let i = index" class="col-12 shadow-sm p-4 mb-3 bg-light">
+
       <div class="row">
         <div class="col-md-10">
           <h3 class="font-weight-normal">{{ destination.title }}</h3>
@@ -23,6 +24,7 @@
         <p class="col-12">{{ destination.description }}</p>
         <img class="col-6" [src]="destination.image" alt="">
       </div>
+
       <div class="row">
         <div class="col-9">
           <div class="d-flex">
@@ -30,10 +32,10 @@
               <button class="btn btn-primary m-1"  type="button" data-toggle="modal" data-target="#destinationsFormModal" (click)="onEditDestination(destination, i)"><i class="fas fa-edit"></i></button>
               <button class="btn btn-danger m-1" type="button" data-toggle="modal" data-target="#deletePropertyModal" onclick = "$('.show').trigger('click')" (click)="onDeleteDestination(destination ,i)"><i class="fas fa-trash-alt"></i></button>
             </div>
-          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
@@ -63,6 +65,14 @@
           </div>
           <div class="form-group">
             <input type="text" placeholder="Paris" class="form-control" formControlName="ville">
+          </div>
+          <div *ngFor="let destination of destinations; let i=index">
+            <div *ngFor="let tour of destination.tours; let i=index">
+              <label>
+                <input type="checkbox" [value]="tour.title" (change)="onCheckboxChange($event)"/>
+                {{tour.title}}
+              </label>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DestinationService } from 'src/app/shared/services/destination.service';
 import { Destination } from 'src/app/shared/models/destination';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { Tours } from 'src/app/shared/models/tours';
+import { ToursService } from 'src/app/shared/services/tours.service';
 
 @Component({
   selector: 'app-admin-destinations',
@@ -13,22 +15,41 @@ export class AdminDestinationsComponent implements OnInit {
 
   editMode = false;
   indexToRemove: any;
-
+  destinationsForm: FormGroup;
   public destinations: Destination[] = [];
+  public tours: Tours[] = [];
 
-  constructor( public destinationService: DestinationService, private fb: FormBuilder) { }
-
-  destinationsForm = this.fb.group({
+  constructor( public toursService: ToursService, public destinationService: DestinationService, private fb: FormBuilder) {
+    this.destinationsForm = this.fb.group({
       id: [''],
       title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(1000)]],
       pays: [''],
       image: [''],
-      ville: ['']
+      ville: [''],
+      tours: this.fb.array([], [Validators.required])
     });
+   }
 
   ngOnInit() {
     this.getDestinations();
+  }
+
+  onCheckboxChange(e) {
+    const checkArray: FormArray = this.destinationsForm.get('tours') as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: FormControl) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
 
   getDestinations() {
@@ -36,6 +57,15 @@ export class AdminDestinationsComponent implements OnInit {
       (paramDestinations) => {
          this.destinations =  paramDestinations;
          console.log(this.destinations);
+      }
+    );
+  }
+
+  getTours() {
+    this.toursService.getTours().subscribe(
+      (paramTours) => {
+         this.tours =  paramTours;
+         console.log(this.tours);
       }
     );
   }
@@ -65,12 +95,18 @@ export class AdminDestinationsComponent implements OnInit {
   }
 
   onSubmit() {
-      if (this.editMode) {
-        this.destinationService.updateDestination(this.destinationsForm.value, this.destinationsForm.value.id).subscribe(result => result);
-        window.location.reload();
-      } else {
-          this.destinationService.postDestination(this.destinationsForm.value).subscribe(result => result);
-          window.location.reload();
-      }
+    console.log(this.destinationsForm.value);
     }
 }
+
+
+//   onSubmit() {
+//       if (this.editMode) {
+//     this.destinationService.updateDestination(this.destinationsForm.value, this.destinationsForm.value.id).subscribe(result => result);
+//         window.location.reload();
+//       } else {
+//           this.destinationService.postDestination(this.destinationsForm.value).subscribe(result => result);
+//           window.location.reload();
+//       }
+//     }
+// }

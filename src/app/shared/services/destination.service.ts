@@ -27,6 +27,14 @@ export class DestinationService {
     return this.http.post<Destination>(`${this.api}/destinations`, destination);
   }
 
+  public postToursToDestination(toursId: number, destinationId: number): Observable<Destination> {
+    const objToSend = {
+      toursId,
+      destinationId
+    };
+    return this.http.post<Destination>(`${this.api}/destinations/tours`, objToSend);
+  }
+
   public deleteDestination(destination: Destination): Observable<Destination> {
     return this.http.delete<Destination>(`${this.api}/destinations/${destination.id}`);
   }
