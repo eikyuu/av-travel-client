@@ -31,14 +31,14 @@ a {
   .destinations_h1 {
     text-align: left;
   }
-
+  .destinations_img {
+    height: 20rem;
+    width: 34rem;
+  }
 }
 
 @media (min-width: 1200px) {
 
-  .destinations_img {
-    height: 20rem;
-    width: 100%;
-  }
+
 
 }

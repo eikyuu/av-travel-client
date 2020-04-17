@@ -22,12 +22,11 @@ export class AdminDestinationsComponent implements OnInit {
   constructor( public toursService: ToursService, public destinationService: DestinationService, private fb: FormBuilder) {
     this.destinationsForm = this.fb.group({
       id: [''],
-      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(1000)]],
       pays: [''],
       image: [''],
       ville: [''],
-      tours: this.fb.array([], [Validators.required])
     });
    }
 

@@ -14,6 +14,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { AdminDestinationsComponent } from './pages/admin-destinations/admin-destinations.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AdminToursComponent } from './pages/admin-tours/admin-tours.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     PlayerComponent,
     AdminDashboardComponent,
     AdminDestinationsComponent,
+    AdminToursComponent,
   ],
   imports: [
     BrowserModule,
