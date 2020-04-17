@@ -33,24 +33,25 @@ export class AdminDestinationsComponent implements OnInit {
 
   ngOnInit() {
     this.getDestinations();
+    this.getTours();
   }
 
-  onCheckboxChange(e) {
-    const checkArray: FormArray = this.destinationsForm.get('tours') as FormArray;
+  // onCheckboxChange(e) {
+  //   const checkArray: FormArray = this.destinationsForm.get('tours') as FormArray;
 
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
+  //   if (e.target.checked) {
+  //     checkArray.push(new FormControl(e.target.value));
+  //   } else {
+  //     let i = 0;
+  //     checkArray.controls.forEach((item: FormControl) => {
+  //       if (item.value === e.target.value) {
+  //         checkArray.removeAt(i);
+  //         return;
+  //       }
+  //       i++;
+  //     });
+  //   }
+  // }
 
   getDestinations() {
     this.destinationService.getDestinations().subscribe(
@@ -75,7 +76,7 @@ export class AdminDestinationsComponent implements OnInit {
     this.destinationsForm.reset();
   }
 
-  onEditDestination(destination: Destination) {
+  onEditDestination(destination: Destination, tours: Tours) {
     this.editMode = true;
     this.destinationsForm.get('id').setValue(destination.id);
     this.destinationsForm.get('title').setValue(destination.title);
@@ -95,18 +96,12 @@ export class AdminDestinationsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.destinationsForm.value);
+      if (this.editMode) {
+        this.destinationService.updateDestination(this.destinationsForm.value, this.destinationsForm.value.id).subscribe(result => result);
+        window.location.reload();
+      } else {
+          this.destinationService.postDestination(this.destinationsForm.value).subscribe(result => result);
+          window.location.reload();
+      }
     }
 }
-
-
-//   onSubmit() {
-//       if (this.editMode) {
-//     this.destinationService.updateDestination(this.destinationsForm.value, this.destinationsForm.value.id).subscribe(result => result);
-//         window.location.reload();
-//       } else {
-//           this.destinationService.postDestination(this.destinationsForm.value).subscribe(result => result);
-//           window.location.reload();
-//       }
-//     }
-// }

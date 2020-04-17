@@ -66,14 +66,14 @@
           <div class="form-group">
             <input type="text" placeholder="Paris" class="form-control" formControlName="ville">
           </div>
-          <div *ngFor="let destination of destinations; let i=index">
-            <div *ngFor="let tour of destination.tours; let i=index">
+
+            <!-- <div *ngFor="let tour of tours; let i=index">
               <label>
-                <input type="checkbox" [value]="tour.title" (change)="onCheckboxChange($event)"/>
+                <input type="checkbox" [value]="tour.id"  (change)="onCheckboxChange($event)"/>
                 {{tour.title}}
               </label>
-            </div>
-          </div>
+            </div> -->
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
