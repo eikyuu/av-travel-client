@@ -35,23 +35,6 @@ export class AdminDestinationsComponent implements OnInit {
     this.getTours();
   }
 
-  // onCheckboxChange(e) {
-  //   const checkArray: FormArray = this.destinationsForm.get('tours') as FormArray;
-
-  //   if (e.target.checked) {
-  //     checkArray.push(new FormControl(e.target.value));
-  //   } else {
-  //     let i = 0;
-  //     checkArray.controls.forEach((item: FormControl) => {
-  //       if (item.value === e.target.value) {
-  //         checkArray.removeAt(i);
-  //         return;
-  //       }
-  //       i++;
-  //     });
-  //   }
-  // }
-
   getDestinations() {
     this.destinationService.getDestinations().subscribe(
       (paramDestinations) => {

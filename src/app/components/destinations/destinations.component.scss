@@ -33,12 +33,15 @@ a {
   }
   .destinations_img {
     height: 20rem;
-    width: 34rem;
+    width: 29rem;
   }
 }
 
 @media (min-width: 1200px) {
 
+  .destinations_img {
+    width: 34rem;
+  }
 
 
 }
